@@ -3,7 +3,7 @@ layout: default
 ---
 ## **Tutorials**
 
-We provide two tutorials for MPI-SV. We first use MPI-SV to analyze two motivation programs wherein the verification properties are **deadlock freedom** and the one written in **Linear Temporal Logic (LTL)**, respectively. Then, we use MPI-SV to verify a real-world MPI program. **Suppose MPI-SV is installed at **&lt;mpisv-dir&gt;**.
+We provide two tutorials for MPI-SV. We first use MPI-SV to analyze two motivation programs wherein the verification properties are **deadlock freedom** and the one written in **Linear Temporal Logic (LTL)**, respectively. Then, we use MPI-SV to verify a real-world MPI program. **Suppose MPI-SV is installed at &lt;mpisv-dir&gt;**.
 
 ## [](#header-2)**The Motivation Examples**
 
@@ -252,7 +252,7 @@ No Violation detected by MPI-SV
 Different Pcs: 1
 
 ```
-MPI-SV will report that no violation is detected. It indicates that pure symbolic execution fails to detect the violation. Hence, with model-checking based boosting, pure symbolic execution cannot verify the temporal properties in LTL.
+MPI-SV will report that no violation is detected. **It indicates that pure symbolic execution fails to detect the violation. Hence, without model-checking based boosting, pure symbolic execution cannot verify the temporal properties in LTL.**
 
 
 ## [](#header-2)**A real-world image manipulation MPI program**
