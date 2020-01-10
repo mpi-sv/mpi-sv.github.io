@@ -93,7 +93,7 @@ p1 = Recv(0,1)
 p2 = Recv(2,3)
 U ! p2 p1
 ```
-There are two atomic propositions: **p1** and **p2**. **p1** represents that process 0 receives a message from process 1 in the blocing manner. Similarly, **p2** represents that process 2 receives a message from process 3 in the blocing manner. The LTL property is **U ! p2 p1**. It requires that **p1** must become true at some point and before that point **p2** cannot be true, i.e., process 0 must receive a message from process 1 and before that process 2 cannot receive a message from process 3. 
+There are two atomic propositions: **p1** and **p2**. **p1** represents that process 0 receives a message from process 1 in the blocking manner. Similarly, **p2** represents that process 2 receives a message from process 3 in the blocking manner. The LTL property is **U ! p2 p1**. It requires that **p1** must become true at some point and before that point **p2** cannot be true, i.e., process 0 must receive a message from process 1 and before that process 2 cannot receive a message from process 3. 
 
 Please feel free to contact us if you have any problem.
 
