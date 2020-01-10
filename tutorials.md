@@ -3,12 +3,13 @@ layout: default
 ---
 ## **Tutorials**
 
-We provide two tutorials for MPI-SV. We first use MPI-SV to analyze two motivation programs wherein the verification properties are **deadlock freedom** and the one written in **Linear Temporal Logic (LTL)**, respectively. Then, we use MPI-SV to verify a real-world MPI program. 
+We provide two tutorials for MPI-SV. We first use MPI-SV to analyze two motivation programs wherein the verification properties are **deadlock freedom** and the one written in **Linear Temporal Logic (LTL)**, respectively. Then, we use MPI-SV to verify a real-world MPI program. **Suppose MPI-SV is installed at **&lt;mpisv-dir&gt;**.
 
 ## [](#header-2)**The Motivation Examples**
 
+We have two motivation examples. The first one is for demostrating deadlock freedomv verification; the second one is for demostrating the verification of LTL temporal property. 
 
-The source code of the example for **deadlock freedom** verification is as follows.
+The source code of the example for **deadlock freedom** verification is as follows. The source code file is located at **&lt;mpisv-dir&gt;/examples/demo.c**.
 
 ```c
 #include <stdio.h>
@@ -53,10 +54,10 @@ int main(int argc, char **argv) {
 
 The first process (i.e., the one with rank 0, denoted by P0) gets an input character **c** first. Then, P0 will receive v1's value from P1 if **c** is **not** equal to **'a'**; otherwise, P0 will use a non-blocking wildcard receive to receive the value. Finally, P0 receives v2's value from P3. For the other processes, each sends its rank value to P0 and terminates. Suppose that we run this MPI program in four process. An error will happen if **c** is equal to **'a'** and the MPI_Irecv receives the message from P3. Then, the last blocking receive blocks P0 because the message from P3 is already received by the MPI\_Irecv, which results in a deadlock, i.e., the program does not terminate but cannot progress.
 
-We can use MPI-SV to verify this program. First, we use **mpisvcc** to compile the program. Suppose the program in the directory **test** , and the file name is **demo.c**.
+We can use MPI-SV to verify this program. First, we use **mpisvcc** to compile the program.
 
 ```
-cd test
+cd <mpisv-dir>/examples
 mpisvcc demo.c -o demo.bc
 ```
 
@@ -121,8 +122,7 @@ It indicates that MPI-SV **only** needs 2 iterations to find the deadlock by usi
 
 ***
 
-The source code of the example for **Linear Temporal Logic (LTL)** property verification is as follows.
-
+The source code of the example for **Linear Temporal Logic (LTL)** temporal property verification is as follows. The source file is located at **&lt;mpisv-dir&gt;/examples/demo-ltl.c**.
 ```c
 #include <stdio.h>
 #include "mpi.h"
@@ -165,31 +165,50 @@ int main(int argc, char **argv) {
 
 As the program depicted, P0 and P2 receive v1's value from P1 and P3, respectively. Meanwhile, P1 sends its rank value to P0; P3 sends its rank value to P2. 
 
-Given a file describing the **Linear Temporal Logic (LTL)** property like follows:
+The file of the **Linear Temporal Logic (LTL)** property is located at **&lt;mpisv-dir&gt;/examples/ltl**. The content is as follows:
 
 ```
 p1 = Recv(0,1)
 p2 = Recv(2,3)
 U ! p2 p1
 ```
-We use the propositions **p1** and **p2** to represent the operation **Recv(0,1)** (i.e., P0 recives a message from P1 with blocking) and **Recv(2,3)** (i.e., 3rewP2 recives a message from P3 with blocking), respectively. And the LTL property we wanna verify is **U ! p2 p1**, that is, **! p2** has to hold at least until **p1** becomes true. This property does not hold since there is no relation between the occurence of **p1** and **p2**.
+We use the propositions **p1** and **p2** to represent the operation **Recv(0,1)** (i.e., P0 recives a message from P1 with blocking) and **Recv(2,3)** (i.e., 3rewP2 recives a message from P3 with blocking), respectively. And the LTL property we wanna verify is **U ! p2 p1**, that is, **! p2** has to hold at least until **p1** becomes true. This property does not hold since there is no relation between the occurence of **p1** and **p2**. The format of LTL property file can be found in [**Manual**](manual).
 
-We can use MPI-SV to verify this program. First, we use **mpisvcc** to compile the program. Suppose the program in the directory **test** , and the file name is **demo-ltl.c**.
+We can use MPI-SV to verify this program. First, we use **mpisvcc** to compile the program.
 
 ```
-cd test
+cd <mpisv-dir>/examples
 mpisvcc demo-ltl.c -o demo-ltl.bc
 ```
 
 Then, we can use **mpisv** to verify the program.
 
 ```
-mpisv -wild-opt -use-directeddfs-search -ltl-property=($pwd)/ltl demo-ltl.bc 
+mpisv 4 -wild-opt -use-directeddfs-search -ltl-property=$(pwd)/ltl demo-ltl.bc 
 ```
 
 The output messages should be as follows.
 
 ```
+...
+I0110 16:31:31.862882    25 analysis.cpp:123] =======================================================
+Assertion: P() deadlockfree
+********Verification Result********
+The Assertion (P() deadlockfree) is VALID.
+
+********Verification Setting********
+Admissible Behavior: All
+Search Engine: First Witness Trace using Depth First Search
+System Abstraction: False
+
+
+********Verification Statistics********
+Visited States:10
+Total Transitions:13
+Time Used:0.0389141s
+Estimated Memory Used:8560.64KB
+
+
 =======================================================
 Assertion: P() |= (!"D3_0?0" U "D1_0?0")
 ********Verification Result********
@@ -203,23 +222,37 @@ Search Engine: Loop Existence Checking - The negation of the LTL formula is a sa
 System Abstraction: False
 Fairness: no fairness
 
+
 ********Verification Statistics********
 Visited States:6
 Total Transitions:7
-Time Used:0.0023602s
+Time Used:0.0031145s
 Estimated Memory Used:8548.352KB
 
-I0110 11:50:01.969094  6074 Executor_Timers.cpp:218] current file line: /root/MPISE_root/MPISE_Install/CLOUD9/src/MPISE/AzequiaMPI.llvm/azqmpi/src/hook/hook.c: 355/4550
-1->D1_0?0:2->D3_0?0:
+
+
+
 
 MPI-SV: totally 1 iterations
 MPI-SV: find a violation in the 1 iterations
 Different Pcs: 1
-
 ```
 
-It indicates that MPI-SV finds the deadlock at the 1th iteration and report the counter-example.
+It indicates that MPI-SV finds the deadlock at the 1th iteration and reports the counter-example.
 
+However, if we use pure symbolic execution to verify this propety by the following command.
+```
+mpisv 4 -ltl-property=$(pwd)/ltl demo-ltl.bc 
+``` 
+The expected result is as follows.
+```
+...
+MPI-SV: totally 1 iterations
+No Violation detected by MPI-SV
+Different Pcs: 1
+
+```
+MPI-SV will report that no violation is detected. It indicates that pure symbolic execution fails to detect the violation. Hence, with model-checking based boosting, pure symbolic execution cannot verify the temporal properties in LTL.
 
 
 ## [](#header-2)**A real-world image manipulation MPI program**
