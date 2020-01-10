@@ -58,7 +58,7 @@ MPI-SV verifies deadlock-freedom property in default. If one wants to verify oth
 <p>+
 <f>
 ```
-There are two parts. The first part defines the events of atomic propositions. Each atomic proposition &lt;p&gt; is defined as follows, where &lt;op&gt; can only be one of the four message passing operators. Please refer to our [paper](jump1) for the meanings of these four operations. Each atomic proposition defines a message passing between two processes using an operation. The first number defines the rank of the processs where the operation is in. The second number defines the rank of the target process of a send operation or the source process of a receive operation.
+There are two parts. The first part defines the events of atomic propositions. Each atomic proposition &lt;p&gt; is defined as follows, where &lt;op&gt; can only be one of the four message passing operators. Please refer to our [[paper]](#jump1) for the meanings of these four operations. Each atomic proposition defines a message passing between two processes using an operation. The first number defines the rank of the processs where the operation is in. The second number defines the rank of the target process of a send operation or the source process of a receive operation.
 ```
 <p> ::= 'p'[1-9][0-9]* = <op>([0-9]+,[0-9]+)
 <op> ::= Recv | Irecv | Ssend | Isend
