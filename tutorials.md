@@ -172,7 +172,7 @@ p1 = Recv(0,1)
 p2 = Recv(2,3)
 U ! p2 p1
 ```
-We use the propositions **p1** and **p2** to represent the operation **Recv(0,1)** (i.e., P0 recives a message from P1 with blocking) and **Recv(2,3)** (i.e., 3rewP2 recives a message from P3 with blocking), respectively. And the LTL property we wanna verify is **U ! p2 p1**, that is, **! p2** has to hold at least until **p1** becomes true. This property does not hold since there is no relation between the occurence of **p1** and **p2**. The format of LTL property file can be found in [**Manual**](manual).
+We use the propositions **p1** and **p2** to represent the operation **Recv(0,1)** (i.e., P0 recives a message from P1 in the blocking manner) and **Recv(2,3)** (i.e., P2 recives a message from P3 in the blocking manner), respectively. The LTL property we want to verify is **U ! p2 p1**, that is, **! p2** has to hold at least until **p1** becomes true. This property does not hold since there is no relation between the occurence of **p1** and **p2**. The format of LTL property file can be found in [**Manual**](manual).
 
 We can use MPI-SV to verify this program. First, we use **mpisvcc** to compile the program.
 
