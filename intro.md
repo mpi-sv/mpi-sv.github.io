@@ -37,6 +37,6 @@ Please refer to [[1]](#jump1) for the details of MPI-SV's technique.
 
 
 * * *
-<span id="jump1">[1]</span>. Hengbiao Yu, Zhenbang Chen, Xianjin Fu, Ji Wang, Zhendong Su, Jun Sun, Chun Huang, Wei Dong. Symbolic Verification of Message Passing Interface Programs, in 42nd IEEE/ACM International Conference on Software Engineering (ICSE 2020), to appear.
+<span id="jump1">[1]</span>. Hengbiao Yu, Zhenbang Chen, Xianjin Fu, Ji Wang, Zhendong Su, Jun Sun, Chun Huang, Wei Dong. Symbolic Verification of Message Passing Interface Programs, in 42nd IEEE/ACM International Conference on Software Engineering (ICSE 2020). ([Pre-print](https://zbchen.github.io/Papers_files/icse-2020-preprint.pdf))
 
 * * *
