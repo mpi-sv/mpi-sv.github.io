@@ -26,7 +26,9 @@ The technique implemented by **MPI-SV** is presented in [[1]](#jump1). The techn
 
 *   [**Manual for the Docker Image**](dockerManual)
 
-*   [**Github Repo**](https://github.com/mpi-sv/mpi-sv)
+*   [**Binary Github Repo**](https://github.com/mpi-sv/mpi-sv)
+
+*   [**Source Code Github Repo**](https://github.com/mpi-sv/mpi-sv-src)
 
 * * *
 
