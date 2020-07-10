@@ -286,7 +286,7 @@ mpisv 6 -wild-opt -use-directeddfs-search image_mani.bc -unsafe
 ```
 The last three output messages should be as follows.
 ```
-MPI-SV: totally 96 iterations
+MPI-SV: totally 4 iterations
 No Violation detected by MPI-SV
 Different Pcs: 4
 ```
