@@ -40,6 +40,8 @@ Please feel free to contact us if you have any problem.
 *   <font color="#0000FF" size="4">mpi.symbolic.verifier@gmail.com</font>
 
 * * *
-<span id="jump1">[1]</span>. Hengbiao Yu, Zhenbang Chen, Xianjin Fu, Ji Wang, Zhendong Su, Jun Sun, Chun Huang, Wei Dong. Symbolic Verification of Message Passing Interface Programs, in 42nd IEEE/ACM International Conference on Software Engineering (ICSE 2020). ([Pre-print](https://zbchen.github.io/Papers_files/icse-2020-preprint.pdf))
+<span id="jump1">[1]</span>. Hengbiao Yu, Zhenbang Chen, Xianjin Fu, Ji Wang, Zhendong Su, Jun Sun, Chun Huang, Wei Dong. Symbolic Verification of Message Passing Interface Programs, in 42nd IEEE/ACM International Conference on Software Engineering (ICSE 2020). ([PDF](https://zbchen.github.io/Papers_files/icse-2020-preprint.pdf))
+
+<span id="jump2">[2]</span>. MPI-SV: A Symbolic Verifier for MPI Programs, in 42nd IEEE/ACM International Conference on Software Engineering (ICSE 2020), Demo track. ([PDF](http://zbchen.github.io/Papers_files/icse-2020-demo.pdf))
 
 * * *
